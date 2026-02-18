@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GlobalPlayerContext } from "../context/GlobalPlayerContext";
 import PlayerModal from "../components/PlayerModal";
+import AddToPlaylist from "../components/AddToPlaylist";
 
 export default function SongPlayPage() {
   const { id } = useParams();
   const { audio, setData, data,pause,setPause} = useContext(GlobalPlayerContext);
   const [loading, setLoading] = useState(true);
+
 
 
   useEffect(() => {
@@ -17,6 +19,7 @@ export default function SongPlayPage() {
       const result = await res.json();
 
       const songData = result.data || [];
+      console.log(songData,"songplaypage console")
       setData(songData);
 
       if (songData.length > 0) {
@@ -44,6 +47,7 @@ export default function SongPlayPage() {
           <img src={song.image?.[2]?.url} alt={song.name} />
         </div>
 
+
         <div className="hero-info">
           <span className="badge">🎵 Now Playing</span>
 
@@ -60,6 +64,7 @@ export default function SongPlayPage() {
           >
            { !pause?"▶ Play " :"⏸️ Pause "}
           </button>
+          
 
           <p className="song-desc">
             Experience <strong>{song.name}</strong> — a beautifully crafted

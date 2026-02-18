@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { GlobalPlayerContext } from "../context/GlobalPlayerContext";
+import AddToPlaylist from "./AddToPlaylist";
 
 export default function PlayerModal() {
+  const [open,setOpen]=useState(false)
   const { audio, setCurrentTime, currentTime, data,pause,setPause } =
     useContext(GlobalPlayerContext);
 
@@ -82,6 +84,9 @@ export default function PlayerModal() {
 
           <span>{format(duration)}</span>
         </div>
+      </div>
+      <div className="addToPlaylist">
+        <AddToPlaylist data={{open,setOpen}}/>
       </div>
 
       {/* RIGHT */}

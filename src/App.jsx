@@ -8,6 +8,12 @@ import { SongProvider } from './context/SongContext'
 import SongPlayPage from './pages/SongPlayPage'
 import PlayerModal from './components/PlayerModal'
 import { GlobalPlayerContext, GlobalPlayerProvider } from './context/GlobalPlayerContext'
+import SignUp from './pages/Auth/SignUp'
+import LogIn from './pages/Auth/LogIn'
+import { AuthProvider } from './context/AuthContext'
+import ProtectedRoute from './pages/Auth/ProtectedRoute'
+import PlaylistPage from './pages/PlaylistPage'
+import PlaylistDetail from './pages/PlaylistDetail'
 
 
 function AppInner() {
@@ -19,9 +25,14 @@ function AppInner() {
         <Routes>
           <Route path="/" element={<Home />}>
             <Route index element={<Hero />} />
-            <Route path="song" element={<SongPage />} />
-            <Route path="song/:id" element={<SongPlayPage />} />
+            <Route path="song" element={<ProtectedRoute><SongPage /></ProtectedRoute>} />
+            <Route path="song/:id" element={<ProtectedRoute><SongPlayPage /></ProtectedRoute>} />
             <Route path="about" element={<About />} />
+            <Route path="/sign-up" element={<SignUp/>} />
+            <Route path="/log-in" element={<LogIn/>} />
+            <Route path="/playlists" element={<ProtectedRoute><PlaylistPage/></ProtectedRoute>} />
+            <Route path="playlist/:id" element={<ProtectedRoute><PlaylistDetail/></ProtectedRoute>} />
+
           </Route>
         </Routes>
       </BrowserRouter>
@@ -32,10 +43,12 @@ function AppInner() {
 }
 export default function App() {
   return (
+    <AuthProvider>
     <GlobalPlayerProvider>
     <SongProvider>
     <AppInner/>
     </SongProvider>
     </GlobalPlayerProvider>
+    </AuthProvider>
   )
 }
