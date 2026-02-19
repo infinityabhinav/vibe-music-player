@@ -19,7 +19,6 @@ export default function SongPlayPage() {
       const result = await res.json();
 
       const songData = result.data || [];
-      console.log(songData,"songplaypage console")
       setData(songData);
 
       if (songData.length > 0) {
