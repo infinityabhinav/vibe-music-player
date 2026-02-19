@@ -54,8 +54,8 @@ export default function LogIn() {
         <button>Log In</button>
 
 
-      </form>
         <button type="button" onClick={()=>navigate("/sign-up")}>Go to Sign Up Page</button>
+      </form>
     </div>
   )
 }
