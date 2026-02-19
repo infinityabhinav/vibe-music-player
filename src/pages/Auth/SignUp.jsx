@@ -55,8 +55,8 @@ export default function SignUp() {
 
         {error && <p>{error}</p>}
         <button>Sign Up</button>
-        <button onClick={()=>navigate('/log-in')}>Go to Login Page</button>
       </form>
+        <button onClick={()=>navigate('/log-in')}>Go to Login Page</button>
     </div>
   )
 }

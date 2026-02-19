@@ -52,10 +52,10 @@ export default function LogIn() {
         {error && <p>{error}</p>}
 
         <button>Log In</button>
-        <button onClick={()=>navigate("/sign-up")}>Go to Sign Up Page</button>
 
 
       </form>
+        <button onClick={()=>navigate("/sign-up")}>Go to Sign Up Page</button>
     </div>
   )
 }
