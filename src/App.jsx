@@ -28,12 +28,12 @@ function AppInner() {
             <Route path="song" element={<ProtectedRoute><SongPage /></ProtectedRoute>} />
             <Route path="song/:id" element={<ProtectedRoute><SongPlayPage /></ProtectedRoute>} />
             <Route path="about" element={<About />} />
-            <Route path="/sign-up" element={<SignUp/>} />
-            <Route path="/log-in" element={<LogIn/>} />
             <Route path="/playlists" element={<ProtectedRoute><PlaylistPage/></ProtectedRoute>} />
             <Route path="playlist/:id" element={<ProtectedRoute><PlaylistDetail/></ProtectedRoute>} />
 
           </Route>
+            <Route path="/sign-up" element={<SignUp/>} />
+            <Route path="/log-in" element={<LogIn/>} />
         </Routes>
       </BrowserRouter>
 
